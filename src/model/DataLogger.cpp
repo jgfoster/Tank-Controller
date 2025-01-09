@@ -42,12 +42,12 @@ void DataLogger::loop() {
     writeToSerialLog();
     nextSerialLogTime = (msNow / SERIAL_LOGGING_INTERVAL + 1) * SERIAL_LOGGING_INTERVAL;
   } else if (msNow >= nextRemoteLogTime) {
-    writeDataToRemoteLog();
+    // writeDataToRemoteLog();
     ThermalProbe_TC::instance()->resetSample();
     nextRemoteLogTime = (msNow / REMOTE_LOGGING_INTERVAL + 1) * REMOTE_LOGGING_INTERVAL;
   } else if (shouldWriteWarning) {
     // a "warning" is a change in configuration (a wrong value could be catastrophic)
-    writeWarningToRemoteLog();
+    // writeWarningToRemoteLog();
     shouldWriteWarning = false;
   }
 }
